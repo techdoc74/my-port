@@ -107,8 +107,9 @@ header nav a:hover {
 #about img {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    border-radius: 70%;
     margin: 20px;
+    
 }
 
 /* Projects Section Styles */
@@ -236,3 +237,59 @@ footer a:hover {
         height: 120vh;
     }
 }
+.fade {
+        animation: fadeIn 5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+}
+
+.slidein {
+    animation: slideIn 1.5s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.type {
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    border-right: 0.15em solid black;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: black;
+    }
+}
+
+
+
+
+
