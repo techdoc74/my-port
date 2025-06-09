@@ -17,22 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Contact form submission
-    const contactForm = document.querySelector('#contact form');
+    const contactForm = document.getElementById('contactForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+    const submitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.querySelector('#contact input[type="text"]').value;
-            const email = document.querySelector('#contact input[type="email"]').value;
-            const message = document.querySelector('#contact textarea').value;
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const email = contactForm.querySelector('input[type="email"]').value;
+            const message = contactForm.querySelector('textarea').value;
             console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
             // Add your form submission logic here
         });
     }
-
-    // Advanced contact form behavior
-    const contactForm = document.getElementById('contactForm');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-    const submitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
     if (contactForm && thankYouMessage && submitBtn) {
         // Create a spinner element
@@ -159,13 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navToggle && navUl) {
         navToggle.addEventListener('click', () => {
             navUl.classList.toggle('open');
-            navToggle.classList.toggle('active'); // For hamburger animation
+            navToggle.classList.toggle('active');
+            // Toggle icon between bars and X
+            const icon = navToggle.querySelector('i');
+            if (navToggle.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         });
-        // Close menu when a link is clicked
         navUl.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navUl.classList.remove('open');
                 navToggle.classList.remove('active');
+                // Reset icon to bars
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
             });
         });
     }

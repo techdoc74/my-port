@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(120deg, #e3f0ff 0%, #f7f9fb 100%);
@@ -20,7 +25,7 @@ header {
     padding: 1.2rem 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1100;
 }
 
 nav ul {
@@ -496,37 +501,18 @@ a:focus, button:focus, input:focus, textarea:focus {
 /* Hamburger styles */
 .nav-toggle {
     display: none;
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 1100;
     margin-left: 1rem;
+    font-size: 2rem;
+    color: #007bff;
+    transition: color 0.2s;
 }
-.nav-toggle .bar {
-    height: 4px;
-    width: 100%;
-    background: #007bff;
-    margin: 5px 0;
-    border-radius: 2px;
-    transition: 0.4s;
-    display: block;
-}
-.nav-toggle.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-.nav-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-}
-.nav-toggle.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+.nav-toggle.active,
+.nav-toggle:focus {
+    color: #0056b3;
 }
 
 /* Mobile nav styles */
@@ -546,11 +532,30 @@ a:focus, button:focus, input:focus, textarea:focus {
         padding: 1.5rem 0;
         box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         border-radius: 0 0 18px 18px;
-        display: none !important; /* Force hide by default */
+        display: none !important;
         z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.25s, transform 0.25s;
     }
     nav ul.open {
-        display: flex !important; /* Force show when open */
+        display: flex !important;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+    nav ul li a {
+        font-size: 1rem;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus,
+    nav ul li a:active {
+        background: #007bff;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 0.4em 1em;
+        transition: background 0.2s, color 0.2s;
     }
 }
 
@@ -628,27 +633,92 @@ a:focus, button:focus, input:focus, textarea:focus {
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 0.97rem;
+    header {
+        padding: 0.7rem 0;
+    }
+    nav ul {
+        top: 48px;
+        padding: 1rem 0.2rem;
+        border-radius: 0 0 12px 12px;
+    }
+    .hero-content h1 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .hero-content .type {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    .tagline {
+        font-size: 0.98rem;
+        margin-top: 0.7rem;
+        margin-bottom: 0.7rem;
+    }
+    .profile-img-container {
+        margin-top: 1rem;
+    }
+    .profile-img {
+        width: 45px;
+        height: 45px;
     }
     section,
     section#projects {
-        padding: 0.7rem 0.2rem;
+        padding: 0.4rem 0.1rem;
+        border-radius: 8px;
     }
-    .hero-content h1 {
+    h2 {
         font-size: 1.1rem;
+        margin-bottom: 0.7rem;
     }
-    .profile-img {
-        width: 55px;
-        height: 55px;
+    h3 {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    h4 {
+        font-size: 0.95rem;
+        margin-top: 0.7rem;
+    }
+    .project-card {
+        padding: 1rem 0.5rem;
+    }
+    .project-card img {
+        max-width: 100%;
+        border-radius: 8px;
     }
     .resume-btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.7rem;
+        border-radius: 18px;
+    }
+    #backToTop {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+        bottom: 10px;
+        right: 10px;
+    }
+    footer {
+        padding: 1rem 0 0.3rem 0;
+        border-radius: 0 0 10px 10px;
+    }
+    footer ul {
+        gap: 0.7rem;
         font-size: 0.95rem;
-        padding: 0.5rem 0.7rem;
     }
     .testimonial {
-        padding: 0.7rem 0.2rem;
+        padding: 0.5rem 0.1rem;
+        font-size: 0.97rem;
     }
+    #contact input, #contact textarea {
+        font-size: 0.97rem;
+        padding: 0.6rem 0.7rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 
