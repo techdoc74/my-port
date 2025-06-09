@@ -168,16 +168,16 @@ section#home {
 
 @media (max-width: 700px) {
     .verified-badge {
-        bottom: -8px;
-        right: -8px;
+        bottom: -20px;
+        right: -20px;
         font-size: 1.2rem;
         padding: 2px;
     }
 }
 @media (max-width: 480px) {
     .verified-badge {
-        bottom: -12px;
-        right: -12px;
+        bottom: -18px;
+        right: -18px;
         font-size: 1rem;
         padding: 1px;
     }
