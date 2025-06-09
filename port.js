@@ -152,4 +152,21 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
     }
+
+    // Hamburger menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navUl = document.querySelector('nav ul');
+    if (navToggle && navUl) {
+        navToggle.addEventListener('click', () => {
+            navUl.classList.toggle('open');
+            navToggle.classList.toggle('active'); // For hamburger animation
+        });
+        // Close menu when a link is clicked
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('open');
+                navToggle.classList.remove('active');
+            });
+        });
+    }
 });
