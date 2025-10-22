@@ -1,166 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Navigation smooth scroll
-    document.querySelectorAll('header nav a').forEach((link) => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    // "Learn More" button
-    const learnMoreBtn = document.querySelector('#home button');
-    if (learnMoreBtn) {
-        learnMoreBtn.addEventListener('click', () => {
-            document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-    const submitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = contactForm.querySelector('input[type="text"]').value;
-            const email = contactForm.querySelector('input[type="email"]').value;
-            const message = contactForm.querySelector('textarea').value;
-            console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
-            // Add your form submission logic here
-        });
-    }
-
-    if (contactForm && thankYouMessage && submitBtn) {
-        // Create a spinner element
-        const spinner = document.createElement('span');
-        spinner.className = 'spinner';
-        spinner.style.display = 'none';
-        spinner.style.marginLeft = '10px';
-        spinner.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`;
-        submitBtn.appendChild(spinner);
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Disable button and show spinner
-            submitBtn.disabled = true;
-            spinner.style.display = 'inline-block';
-
-            fetch(contactForm.action, {
-                method: 'POST',
-                body: new FormData(contactForm),
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                spinner.style.display = 'none';
-                if (response.ok) {
-                    contactForm.reset();
-                    contactForm.style.display = 'none';
-                    thankYouMessage.style.display = 'block';
-                    thankYouMessage.style.color = '#007bff';
-                    thankYouMessage.textContent = 'Thank you for reaching out! I will get back to you soon.';
-
-                    // Add "Send another message" button
-                    if (!document.getElementById('sendAnother')) {
-                        const anotherBtn = document.createElement('button');
-                        anotherBtn.id = 'sendAnother';
-                        anotherBtn.textContent = 'Send Another Message';
-                        anotherBtn.style.marginTop = '1rem';
-                        anotherBtn.style.background = '#007bff';
-                        anotherBtn.style.color = '#fff';
-                        anotherBtn.style.border = 'none';
-                        anotherBtn.style.borderRadius = '20px';
-                        anotherBtn.style.padding = '0.5rem 1.5rem';
-                        anotherBtn.style.cursor = 'pointer';
-                        anotherBtn.onclick = function() {
-                            contactForm.style.display = 'block';
-                            thankYouMessage.style.display = 'none';
-                            submitBtn.disabled = false;
-                        };
-                        thankYouMessage.appendChild(anotherBtn);
-                    }
-                } else {
-                    submitBtn.disabled = false;
-                    thankYouMessage.style.display = 'block';
-                    thankYouMessage.style.color = 'red';
-                    thankYouMessage.textContent = 'Sorry, there was an error. Please try again later.';
-                }
-            }).catch(() => {
-                spinner.style.display = 'none';
-                submitBtn.disabled = false;
-                thankYouMessage.style.display = 'block';
-                thankYouMessage.style.color = 'red';
-                thankYouMessage.textContent = 'Sorry, there was an error. Please try again later.';
-            });
-        });
-    }
-
-    // Sticky header
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (!header) return;
-        if (window.scrollY > 50) {
-            header.classList.add('sticky');
-        } else {
-            header.classList.remove('sticky');
-        }
-    });
-
-    // Add CSS styles for sticky header
-    const style = document.createElement('style');
-    style.innerHTML = `
-        header.sticky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Responsive project grid
-    const projectGrid = document.querySelector('.project-grid');
-    if (projectGrid) {
-        const setGridColumns = () => {
-            if (window.innerWidth < 480) {
-                projectGrid.style.gridTemplateColumns = '1fr';
-            } else if (window.innerWidth < 768) {
-                projectGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-            } else {
-                projectGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-            }
-        };
-        window.addEventListener('resize', setGridColumns);
-        setGridColumns();
-    }
-
-    // Back to top button
-    const btn = document.getElementById('backToTop');
-    if (btn) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                btn.style.display = 'flex';
-            } else {
-                btn.style.display = 'none';
-            }
-        });
-        btn.onclick = function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-    }
-
     // Hamburger menu toggle
     const navToggle = document.querySelector('.nav-toggle');
-    const navUl = document.querySelector('nav ul');
-    if (navToggle && navUl) {
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle && navLinks) {
         navToggle.addEventListener('click', () => {
-            navUl.classList.toggle('open');
-            navToggle.classList.toggle('active');
-            // Toggle icon between bars and X
+            navLinks.classList.toggle('active');
             const icon = navToggle.querySelector('i');
-            if (navToggle.classList.contains('active')) {
+            if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
             } else {
@@ -168,15 +15,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.add('fa-bars');
             }
         });
-        navUl.querySelectorAll('a').forEach(link => {
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navUl.classList.remove('open');
-                navToggle.classList.remove('active');
-                // Reset icon to bars
-                const icon = navToggle.querySelector('i');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navToggle.querySelector('i').classList.remove('fa-xmark');
+                    navToggle.querySelector('i').classList.add('fa-bars');
+                }
             });
         });
     }
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.style.display = 'flex';
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+            // Use a timeout to hide after the animation
+            setTimeout(() => {
+                if (window.scrollY <= 300) {
+                    backToTopButton.style.display = 'none';
+                }
+            }, 300);
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Active Nav Link Highlighting on Scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLi = document.querySelectorAll('.nav-links li a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLi.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === `#${current}`) {
+                a.classList.add('active');
+            }
+        });
+    });
+
+    // Formspree submission handling
+    const form = document.getElementById('contactForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const status = document.getElementById('thankYouMessage');
+        const data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                thankYouMessage.style.display = 'block';
+                form.style.display = 'none';
+                form.reset();
+            } else {
+                response.json().then(data => {
+                    // Handle server-side errors if any
+                    status.innerHTML = "Oops! There was a problem submitting your form";
+                    status.style.display = 'block';
+                })
+            }
+        }).catch(error => {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+            status.style.display = 'block';
+        });
+    }
+    form.addEventListener("submit", handleSubmit);
 });

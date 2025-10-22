@@ -6,184 +6,190 @@
     <title>Williams Ihechi | Front-End Developer</title>
     <meta name="description" content="Williams Ihechi - Front-End Developer portfolio. Showcasing projects, skills, and contact information.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="port.css">
+    <link rel="stylesheet" href="port.css"> <!-- Keeping your original CSS file name -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7db342382f.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Animated background -->
+    <div class="background-container">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
     <!-- Header Section -->
-    <header>
-        <nav>
-            <button class="nav-toggle" aria-label="Open navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <ul>
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="#home" class="nav-logo">WI.</a>
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#resume">Resume</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Open navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" data-aos="fade-down">
-        <div class="hero-content">
-            <h1>Hi, I'm Williams Ihechi 👋</h1>
-            <p class="type">Front-End Developer & Full Stack Developer (in view)</p>
-            <div class="tagline">
-                <p>Turning ideas into interactive, accessible web experiences.</p>
-                <div class="hero-socials">
-                    <a href="https://www.linkedin.com/in/ihechi-williams-a1b893276" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/techdoc74/techdoc74" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://x.com/TechDocjosh74" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section" data-aos="fade-down">
+            <div class="hero-content">
+                <h1>Hi, I'm Williams Ihechi <span class="wave">👋</span></h1>
+                <p class="subtitle">A Full-Stack Developer Turning Ideas Into Reality.</p>
+                <p class="tagline">I build interactive, scalable, and accessible web experiences that users love.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="cta-button">View My Work</a>
+                    <div class="hero-socials">
+                        <a href="https://www.linkedin.com/in/ihechi-williams-a1b893276" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/techdoc74" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://x.com/TechDocjosh74" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
                 </div>
             </div>
-            <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
-        </div>
-        <div class="profile-img-container">
-            <img class="profile-img" src="me.jpg" alt="Williams Ihechi">
-            <span class="verified-badge"><i class="fa-solid fa-circle-check"></i></span>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" data-aos="fade-right">
-        <h2>About Me</h2>
-        <p>
-            I'm a passionate and detail-oriented Front-End Developer with a love 
-            for crafting visually stunning and user-friendly digital experiences. 
-            With a few years of experience, I've honed my skills in creating responsive, interactive,
-             and accessible web applications that delight users and meet business goals.
-        </p>
-        <h3>My Journey</h3>
-        <p>
-            My journey began with curiosity about how websites work and a desire to build things from scratch. 
-            Over time, I've developed a strong foundation in HTML, CSS, JavaScript, and frameworks, 
-            allowing me to bring ideas to life in the browser. I thrive on learning new technologies and 
-            collaborating with creative minds.
-        </p>
-        <h3>Values</h3>
-        <ul>
-            <li>Continuous learning and growth</li>
-            <li>Collaboration and open communication</li>
-            <li>Empathy for users and teammates</li>
-            <li>Delivering quality and accessible solutions</li>
-        </ul>
-        <h3>My Expertise</h3>
-        <ul>
-            <li>HTML5, CSS3, JavaScript (ES6+)</li>
-            <li>Web design & mobile-first development</li>
-            <li>Front-end frameworks: React, Angular.</li>
-            <li>UI components, state management, and props</li>
-            <li>CSS preprocessors: Sass, Less</li>
-            <li>Accessibility, performance optimization, cross-browser compatibility</li>
-            <li>Version control: Git</li>
-        </ul>
-        <h3>Let's Connect</h3>
-        <p>
-            If you're looking for a dedicated Front-End Developer to bring your digital vision to life,
-             let's connect! I'm always excited to collaborate, share knowledge, and learn from others in the industry.
-        </p>
-        <h4>Get to Know Me</h4>
-        <ul>
-            <li>Computer Science undergraduate</li>
-            <li>Exploring new design trends and inspiration</li>
-            <li>Contributing to open-source projects</li>
-            <li>Reading about the latest front-end development trends</li>
-            <li>Enjoying outdoor activities or playing sports</li>
-        </ul>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" data-aos="fade-up">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="fedeximg.jpg" alt="FedEx Clone">
-                <h3>FedEx Clone</h3>
-                <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                </div>
-                <p>A pixel-perfect clone of the FedEx website.</p>
-                <a href="https://your-fedex-demo-link.com" target="_blank" class="project-link">check it out</a>
-                <a href="https://github.com/your-f" target="_blank" class="project-link">GitHub</a>
+            <div class="profile-img-container" data-aos="fade-left" data-aos-delay="200">
+                <img class="profile-img" src="me2.jpg" alt="A profile picture of Williams Ihechi">
+                <span class="verified-badge" title="Available for hire"><i class="fa-solid fa-circle-check"></i></span>
             </div>
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="neema2.png" alt="Restaurant Landing Page">
-                <h3>Restaurant Landing Page</h3>
-                <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                </div>
-                <p>A responsive landing page for a modern restaurant.</p>
-                <a href="https://neema-taste-site.netlify.app/" class="project-link">check it out</a>
-                <a href="C:\Users\PC\Documents\GitHub\neema-taste-website" target="_blank" class="project-link">GitHub</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>My journey, skills, and what drives me.</p>
             </div>
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="myport2.png" alt="Portfolio Website">
-                <h3>Portfolio Website</h3>
-                <div class="tech-stack">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a passionate and detail-oriented Full-Stack Developer with a love for crafting visually stunning and user-friendly digital experiences. My journey began with a curiosity for how things work on the web, which evolved into a career building responsive, interactive, and accessible applications that delight users and meet business goals.
+                    </p>
+                    <p>
+                        I thrive on learning new technologies, collaborating with creative minds, and solving complex problems. If you're looking for a dedicated developer to bring your digital vision to life, let's connect!
+                    </p>
+                    <a href="Williams Ihechi Damilola.docx" download class="cta-button">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+                    </a>
                 </div>
-                <p>This portfolio site, built from scratch.</p>
-                <a href="https://ihechiport.netlify.app/" target="_blank" class="project-link">check it out</a>
-                <a href="C:\Users\PC\Documents\GitHub\my-port" target="_blank" class="project-link">GitHub</a>
+                <div class="skills-list">
+                    <h3>Core Expertise</h3>
+                    <div class="skills-grid">
+                        <span>React</span>
+                        <span>JavaScript (ES6+)</span>
+                        <span>Node.js</span>
+                        <span>HTML5 & CSS3</span>
+                        <span>TailwindCSS</span>
+                        <span>Sass</span>
+                        <span>Git & GitHub</span>
+                        <span>REST APIs</span>
+                        <span>Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>My Projects</h2>
+                <p>A selection of my recent work.</p>
+            </div>
+            <div class="project-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="electroic.png" alt="Screenshot of an electronic shop landing page">
+                    </div>
+                    <div class="project-info">
+                        <h3>Electronic Shop Landing Page</h3>
+                        <p>A mobile-first landing page for an electronics shop, featuring product listings and a clean UI.</p>
+                        <div class="tech-stack">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://your-demo-link.com" target="_blank" class="project-link" aria-label="Live Demo">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/techdoc74/your-repo-1" target="_blank" class="project-link" aria-label="GitHub Repository">GitHub <i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="neema2.png" alt="Screenshot of a restaurant landing page">
+                    </div>
+                    <div class="project-info">
+                        <h3>Restaurant Landing Page</h3>
+                        <p>A responsive and elegant landing page designed for a modern restaurant to attract customers.</p>
+                        <div class="tech-stack">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://neema-taste-site.netlify.app/" target="_blank" class="project-link" aria-label="Live Demo">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/techdoc74/neema-taste-website" target="_blank" class="project-link" aria-label="GitHub Repository">GitHub <i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="myport2.png" alt="Screenshot of a portfolio website">
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Portfolio</h3>
+                        <p>The site you are on right now! Built from scratch to showcase my skills and projects.</p>
+                        <div class="tech-stack">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ihechiport.netlify.app/" target="_blank" class="project-link" aria-label="Live Demo">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/techdoc74/my-port" target="_blank" class="project-link" aria-label="GitHub Repository">GitHub <i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Have a project in mind or just want to say hi? My inbox is open!</p>
+            </div>
+            <form action="https://formspree.io/f/xeokakyw" method="POST" id="contactForm" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+            <div id="thankYouMessage" style="display:none; text-align: center; margin-top:1.5rem; color: #ADFFD8; font-size:1.2rem; font-weight:600;">
+                Thank you for reaching out! I will get back to you soon.
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Williams Ihechi. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/ihechi-williams-a1b893276" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/techdoc74" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://x.com/TechDocjosh74" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" data-aos="fade-left">
-        <h2>Testimonials</h2>
-        <div class="testimonial">
-            <p>"Ihechi is a talented developer who delivers quality work on time. Highly recommended!"</p>
-            <span>- mr. Banji, Project Manager</span>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" data-aos="fade-up">
-        <h2>Get in Touch</h2>
-        <p>Feel free to reach out!</p>
-        <form action="https://formspree.io/f/xeokakyw" method="POST" id="contactForm">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="_replyto" placeholder="Email" required>
-            <textarea name="message" placeholder="Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-        <div id="thankYouMessage" style="display:none; margin-top:1.5rem; color:#007bff; font-size:1.2rem; font-weight:600;">
-            Thank you for reaching out! I will get back to you soon.
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" data-aos="fade-right">
-        <h2>My Resume</h2>
-        <p>Download my resume for more details on my professional journey.</p>
-        <div class="resume-download">
-            <a href="Williams Ihechi Damilola.docx" download class="resume-btn">
-                <i class="fa-solid fa-file-arrow-down"></i> Download Resume
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 Williams Ihechi | @techdocdevs</p>
-        <ul>
-            <li><a href="https://www.linkedin.com/in/ihechi-williams-a1b893276" target="_blank"><i class="fa-brands fa-linkedin"></i> Linkedin</a></li>
-            <li><a href="https://github.com/techdoc74/techdoc74" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
-            <li><a href="https://x.com/TechDocjosh74" target="_blank"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
-        </ul>
     </footer>
+    
     <button id="backToTop" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="port.js"></script>
+    
+    <script src="port.js"></script> <!-- Keeping your original JS file name -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50,
+      });
     </script>
 </body>
 </html>
