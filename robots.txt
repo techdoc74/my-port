@@ -1,0 +1,12 @@
+# Robots.txt for Williams Ihechi Portfolio
+# Allow all search engines to crawl and index the website
+
+User-agent: *
+Allow: /
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://ihechiport.netlify.app/sitemap.xml
+
+# Crawl delay (in seconds) to be respectful to server
+Crawl-delay: 1
