@@ -47,11 +47,13 @@
     <meta name="twitter:image" content="https://ihechiport.netlify.app/myport2.png">
 
     <link rel="stylesheet" href="port.css"> <!-- Keeping your original CSS file name -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7db342382f.js" crossorigin="anonymous"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
     <!-- Animated background -->
     <div class="background-container">
         <div class="blob"></div>
@@ -62,13 +64,16 @@
     <!-- Header Section -->
     <header class="main-header">
         <nav class="main-nav">
-            <a href="#home" class="nav-logo">WI.</a>
+            <a href="#home" class="nav-logo">TECHDOC</a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
             <button class="nav-toggle" aria-label="Open navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -129,6 +134,38 @@
                         <span>Responsive Design</span>
                     </div>
                 </div>
+                
+                <!-- Personal Gallery -->
+                <div class="personal-gallery" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Behind the Code</h3>
+                    <p class="gallery-subtitle">Get to know the developer behind the projects</p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="aidressed.jpeg" alt="Williams Ihechi - Professional headshot" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span>Meet Me</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="mein itskills.jpeg" alt="Williams Ihechi - At work in coding environment" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span>Workspace</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="meinlaptop..jpeg" alt="Williams Ihechi - Casual professional setting" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span>Day to Day</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="colab.jpeg" alt="Williams Ihechi - Community and collaboration" loading="lazy">
+                            <div class="gallery-overlay">
+                                <span>Community</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -138,10 +175,19 @@
                 <h2>My Projects</h2>
                 <p>A selection of my recent work.</p>
             </div>
+            
+            <!-- Project Filter -->
+            <div class="project-filters" data-aos="fade-up" data-aos-delay="50">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="react">React</button>
+                <button class="filter-btn" data-filter="javascript">JavaScript</button>
+                <button class="filter-btn" data-filter="html-css">HTML & CSS</button>
+            </div>
+
             <div class="project-grid">
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card" data-filter="html-css" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
-                        <img src="electroic.png" alt="Screenshot of an electronic shop landing page">
+                        <img src="electroic.png" alt="Screenshot of an electronic shop landing page" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>Electronic Shop Landing Page</h3>
@@ -155,9 +201,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card" data-filter="html-css" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
-                        <img src="neema2.png" alt="Screenshot of a restaurant landing page">
+                        <img src="neema2.png" alt="Screenshot of a restaurant landing page" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>Restaurant Landing Page</h3>
@@ -171,9 +217,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-card" data-filter="javascript" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-image">
-                        <img src="myport2.png" alt="Screenshot of a portfolio website">
+                        <img src="myport2.png" alt="Screenshot of a portfolio website" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>Personal Portfolio</h3>
@@ -197,13 +243,25 @@
                 <p>Have a project in mind or just want to say hi? My inbox is open!</p>
             </div>
             <form action="https://formspree.io/f/xeokakyw" method="POST" id="contactForm" class="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="_replyto" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+                    <span class="form-error" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="_replyto" placeholder="Your Email" required aria-label="Your Email">
+                    <span class="form-error" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+                    <span class="form-error" role="alert"></span>
+                </div>
+                <button type="submit" class="cta-button" aria-busy="false">
+                    <span>Send Message</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
             </form>
-            <div id="thankYouMessage" style="display:none; text-align: center; margin-top:1.5rem; color: #ADFFD8; font-size:1.2rem; font-weight:600;">
-                Thank you for reaching out! I will get back to you soon.
+            <div id="thankYouMessage" class="success-message" style="display:none; text-align: center; margin-top:1.5rem; color: #ADFFD8; font-size:1.2rem; font-weight:600;">
+                ✓ Thank you for reaching out! I will get back to you soon.
             </div>
         </section>
     </main>
@@ -220,7 +278,7 @@
         </div>
     </footer>
     
-    <button id="backToTop" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <button id="backToTop" title="Back to top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
     
     <script src="port.js"></script> <!-- Keeping your original JS file name -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
